@@ -70,12 +70,10 @@ exports.getCustomerOrderHistory = (req, res, nxt) => {
     const search = req.body.search_data;
     sequelize
         .query(
-            "SELECT *  FROM  Orders INNER JOIN Customer_Credential ON Orders.customer_id=Customer_Credential.customer_id INNER JOIN Customer_Address ON Orders.customer_address_id=Customer_Address.customer_add_id INNER JOIN Area_Details ON Customer_Address.area_id= Area_Details.area_id  WHERE Orders.customer_id=? && delivered=1 && (customer_phone LIKE ?  OR order_id LIKE ? OR house_no LIKE ? OR road_no LIKE ? OR area_name LIKE ? OR district LIKE ? OR further_description LIKE ? OR payment LIKE ? ) ORDER BY order_time DESC ",
+            "SELECT *  FROM  Orders INNER JOIN Customer_Credential ON Orders.customer_id=Customer_Credential.customer_id INNER JOIN Customer_Address ON Orders.customer_address_id=Customer_Address.customer_add_id WHERE Orders.customer_id=? && delivered=1 && (customer_phone LIKE ?  OR order_id LIKE ? OR house_no LIKE ? OR road_no LIKE ? OR further_description LIKE ? OR payment LIKE ? ) ORDER BY order_time DESC ",
             {
                 replacements: [
                     [customer_id],
-                    [`%${search}%`],
-                    [`%${search}%`],
                     [`%${search}%`],
                     [`%${search}%`],
                     [`%${search}%`],
@@ -99,12 +97,7 @@ exports.getCustomerOrderHistory = (req, res, nxt) => {
                     var address =
                         element.house_no +
                         ", " +
-                        element.road_no +
-                        ", " +
-                        element.area_name +
-                        ", " +
-                        element.district;
-                    
+                        element.road_no;
                     var productorder = {
                         order_id: element.order_id,
                         customer_phone: element.customer_phone,
@@ -134,7 +127,7 @@ exports.getConfirmedOrder = (req, res, nxt) => {
 
     sequelize
         .query(
-            "SELECT *  FROM  Orders INNER JOIN Customer_Credential ON Orders.customer_id=Customer_Credential.customer_id INNER JOIN Customer_Address ON Orders.customer_address_id=Customer_Address.customer_add_id INNER JOIN Area_Details ON Customer_Address.area_id= Area_Details.area_id INNER JOIN Service_Credential ON Orders.service_id=Service_Credential.service_id WHERE order_id=?",
+            "SELECT *  FROM  Orders INNER JOIN Customer_Credential ON Orders.customer_id=Customer_Credential.customer_id INNER JOIN Customer_Address ON Orders.customer_address_id=Customer_Address.customer_add_id INNER JOIN Service_Credential ON Orders.service_id=Service_Credential.service_id WHERE order_id=?",
             {
                 replacements: [order_id],
                 type: sequelize.QueryTypes.SELECT,
@@ -144,11 +137,7 @@ exports.getConfirmedOrder = (req, res, nxt) => {
             let address =
                 element[0].house_no +
                 ", " +
-                element[0].road_no +
-                ", " +
-                element[0].area_name +
-                ", " +
-                element[0].district;
+                element[0].road_no;
            // var tym = moment(element[0].order_time).tz('Asia/Dhaka');
             let ord = {
                 total: element[0].payment,
@@ -222,12 +211,10 @@ exports.getCustomerCancelledOrderHistory = (req, res, nxt) => {
     const search = req.body.search_data;
     sequelize
         .query(
-            "SELECT *  FROM  Orders INNER JOIN Customer_Credential ON Orders.customer_id=Customer_Credential.customer_id INNER JOIN Customer_Address ON Orders.customer_address_id=Customer_Address.customer_add_id INNER JOIN Area_Details ON Customer_Address.area_id= Area_Details.area_id  WHERE Orders.customer_id=? && delivered=3 && (customer_phone LIKE ?  OR order_id LIKE ? OR house_no LIKE ? OR road_no LIKE ? OR area_name LIKE ? OR district LIKE ? OR further_description LIKE ? OR payment LIKE ?  ) ORDER BY order_time DESC ",
+            "SELECT *  FROM  Orders INNER JOIN Customer_Credential ON Orders.customer_id=Customer_Credential.customer_id INNER JOIN Customer_Address ON Orders.customer_address_id=Customer_Address.customer_add_id WHERE Orders.customer_id=? && delivered=3 && (customer_phone LIKE ?  OR order_id LIKE ? OR house_no LIKE ? OR road_no LIKE ? OR further_description LIKE ? OR payment LIKE ?  ) ORDER BY order_time DESC ",
             {
                 replacements: [
                     [customer_id],
-                    [`%${search}%`],
-                    [`%${search}%`],
                     [`%${search}%`],
                     [`%${search}%`],
                     [`%${search}%`],
@@ -256,11 +243,7 @@ exports.getCustomerCancelledOrderHistory = (req, res, nxt) => {
                     var address =
                         element.house_no +
                         ", " +
-                        element.road_no +
-                        ", " +
-                        element.area_name +
-                        ", " +
-                        element.district;
+                        element.road_no;
                     //var tym = moment(element.order_time).tz('Asia/Dhaka');
                     var productorder = {
                         order_id: element.order_id,
@@ -292,12 +275,10 @@ exports.getCustomerActiveOrderHistory = (req, res, nxt) => {
     const search = req.body.search_data;
     sequelize
         .query(
-            "SELECT *  FROM  Orders INNER JOIN Customer_Credential ON Orders.customer_id=Customer_Credential.customer_id INNER JOIN Customer_Address ON Orders.customer_address_id=Customer_Address.customer_add_id INNER JOIN Area_Details ON Customer_Address.area_id= Area_Details.area_id  WHERE Orders.customer_id=? && delivered=0 && (customer_phone LIKE ?  OR order_id LIKE ? OR house_no LIKE ? OR road_no LIKE ? OR area_name LIKE ? OR district LIKE ? OR further_description LIKE ? OR payment LIKE ? ) ORDER BY order_time DESC ",
+            "SELECT *  FROM  Orders INNER JOIN Customer_Credential ON Orders.customer_id=Customer_Credential.customer_id INNER JOIN Customer_Address ON Orders.customer_address_id=Customer_Address.customer_add_id WHERE Orders.customer_id=? && delivered=0 && (customer_phone LIKE ?  OR order_id LIKE ? OR house_no LIKE ? OR road_no LIKE ? OR further_description LIKE ? OR payment LIKE ? ) ORDER BY order_time DESC ",
             {
                 replacements: [
                     [customer_id],
-                    [`%${search}%`],
-                    [`%${search}%`],
                     [`%${search}%`],
                     [`%${search}%`],
                     [`%${search}%`],
@@ -321,11 +302,7 @@ exports.getCustomerActiveOrderHistory = (req, res, nxt) => {
                     var address =
                         element.house_no +
                         ", " +
-                        element.road_no +
-                        ", " +
-                        element.area_name +
-                        ", " +
-                        element.district;
+                        element.road_no;
                     //var tym = moment(element.order_time).tz('Asia/Dhaka');
                     var productorder = {
                         order_id: element.order_id,

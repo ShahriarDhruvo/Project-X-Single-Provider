@@ -16,7 +16,7 @@ const Home = () => {
 
     return (
         <>
-            <div className={"text-center mt-2 mb-5" + syntax}>
+            {/* <div className={"text-center mt-2 mb-5" + syntax}>
                 <h2>
                     Why bother, when <span className="logo-text">ProjectX</span>{" "}
                     is here!
@@ -26,7 +26,9 @@ const Home = () => {
             <LocationContextProvider>
                 <SelectLocation />
                 <Providers />
-            </LocationContextProvider>
+            </LocationContextProvider> */}
+
+            {history.push("/service/provider/4")}
 
             {localStorage.getItem("isServiceProvider") === "true" &&
                 history.push("/orders")}

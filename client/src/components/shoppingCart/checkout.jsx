@@ -371,8 +371,7 @@ const Checkout = (props) => {
                                             value={address.customer_add_id}
                                         >
                                             House No: {address.house_no}, Road
-                                            No: {address.road_no}, Area :{" "}
-                                            {address.area_name}, Further
+                                            No: {address.road_no}, Further
                                             Description:{" "}
                                             {address.further_description
                                                 ? address.further_description
@@ -426,28 +425,6 @@ const Checkout = (props) => {
                                 />
                                 <div className="invalid-feedback">
                                     Please provide a valid road number.
-                                </div>
-                            </div>
-                            <div className="d-none">
-                                <label htmlFor="area_id">Area ID</label>
-                                <input
-                                    required
-                                    type="text"
-                                    id="area_id"
-                                    name="area_id"
-                                    placeholder="1209"
-                                    defaultValue={sessionStorage.getItem(
-                                        "areaID"
-                                    )}
-                                    // className={
-                                    //     "form-control text-center" + border
-                                    // }
-                                    className={
-                                        "form-control text-center"
-                                    }
-                                />
-                                <div className="invalid-feedback">
-                                    Area ID is required
                                 </div>
                             </div>
                         </div>

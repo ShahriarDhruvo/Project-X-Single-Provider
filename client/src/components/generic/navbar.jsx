@@ -203,7 +203,7 @@ const MainNav = (props) => {
                                     Add Products
                                 </Dropdown.Item>
 
-                                <Dropdown.Item
+                                {/* <Dropdown.Item
                                     as={NavLink}
                                     to="/areas"
                                     variant={type}
@@ -216,7 +216,7 @@ const MainNav = (props) => {
                                         icon={["fas", "map-marked-alt"]}
                                     />
                                     Manage Areas
-                                </Dropdown.Item>
+                                </Dropdown.Item> */}
 
                                 <Dropdown.Item
                                     as={NavLink}

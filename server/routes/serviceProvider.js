@@ -1,6 +1,6 @@
 const express = require("express");
 
-const addAreaController = require("../controllers/addArea");
+// const addAreaController = require("../controllers/addArea");
 const employeeController = require("../controllers/employee");
 const profileController = require("../controllers/profile");
 const productController = require("../controllers/products");
@@ -10,10 +10,10 @@ const customerordersController = require("../controllers/customer-order");
 const router = express.Router();
 
 // Area Related Routes
-router.post("/addArea", addAreaController.addArea);
-router.post("/removearea", addAreaController.removeArea);
-router.post("/availablearea", addAreaController.availableArea);
-router.post("/showarea", addAreaController.showArea);
+// router.post("/addArea", addAreaController.addArea);
+// router.post("/removearea", addAreaController.removeArea);
+// router.post("/availablearea", addAreaController.availableArea);
+// router.post("/showarea", addAreaController.showArea);
 
 // Employee Related Routes
 router.post("/addEmployee", employeeController.addEmployee);
@@ -42,13 +42,13 @@ router.post("/inventory/page",productController.inventoryPage);
 router.post("/createOrder", ordersController.createOrder);
 
 //Rowan
-const getServiceAreaController = require("../controllers/getServiceArea");
-router.get("/getServiceArea", getServiceAreaController.getServiceArea);
-router.get("/getDistrict", getServiceAreaController.getDistrict);
-router.post("/getThana", getServiceAreaController.getThana);
-router.post("/getArea", getServiceAreaController.getArea);
-router.get("/getServiceName/:areaId", getServiceAreaController.getServiceName);
-router.post("/getAreaId", getServiceAreaController.getAreaId);
+// const getServiceAreaController = require("../controllers/getServiceArea");
+// router.get("/getServiceArea", getServiceAreaController.getServiceArea);
+// router.get("/getDistrict", getServiceAreaController.getDistrict);
+// router.post("/getThana", getServiceAreaController.getThana);
+// router.post("/getArea", getServiceAreaController.getArea);
+// router.get("/getServiceName/:areaId", getServiceAreaController.getServiceName);
+// router.post("/getAreaId", getServiceAreaController.getAreaId);
 router.post("/createOrderDetails", customerordersController.createOrderDetails);
 router.post("/getOrderDetails", customerordersController.getOrderDetails);
 router.post(

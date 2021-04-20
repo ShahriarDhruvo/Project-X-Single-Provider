@@ -49,20 +49,15 @@ exports.createCustomerAddress = (req, res, next) => {
     var customer_id = req.body.userid;
     const road_no = req.body.road_no;
     const house_no = req.body.house_no;
-    const area_id = req.body.area_id;
     var further_description = req.body.further_description;
-    console.log(road_no);
-    console.log(house_no);
-    console.log(area_id);
 
-    if (road_no != '' && house_no != '' && area_id != '') {
+    if (road_no != '' && house_no != '') {
         customer
             .findAll({
                 where: {
                     customer_id: customer_id,
                     road_no: road_no,
                     house_no: house_no,
-                    area_id : area_id,
                     further_description: further_description,
                 },
             })
@@ -72,12 +67,13 @@ exports.createCustomerAddress = (req, res, next) => {
                         customer_add_id: result[0].customer_add_id,
                     });
                 else {
+                    console.log("dhukse");
                     customer
                         .create({
                             customer_id: customer_id,
                             road_no: road_no,
                             house_no: house_no,
-                            area_id: area_id,
+                            area_id: '7',
                             further_description: further_description,
                         })
                         .then((result) => {
@@ -101,7 +97,7 @@ exports.createCustomerAddress = (req, res, next) => {
     else
     {
         res.status(504).json({
-            message: "Please fill your address properly.",
+            message: "Please fill your address properly",
         });
     }
 };
@@ -110,7 +106,7 @@ exports.getCustomerAddress = (req, res, next) => {
     const customerId = req.body.customerId;
     sequelize
     .query(
-        "SELECT * FROM Customer_Address INNER JOIN Area_Details ON Customer_Address.area_id=Area_Details.area_id WHERE customer_id = ?",
+        "SELECT * FROM Customer_Address WHERE customer_id = ?",
         {
             replacements: [
                 [customerId],
