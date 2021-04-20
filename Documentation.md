@@ -32,7 +32,7 @@
                     "upazilla": "Dhaka City",
                     "district": "Dhaka",
                     "lat": null,
-                    "long": null
+                    ///"long": null
                 },
                 {
                     "area_id": 4,
