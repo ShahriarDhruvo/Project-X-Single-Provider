@@ -1,18 +1,19 @@
-import React, { useContext } from "react";
+import React from "react";
+// import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
-import { ThemeContext } from "../contexts/ThemeContext";
+// import { ThemeContext } from "../contexts/ThemeContext";
 
-import Providers from "./providers/providers";
-import LocationContextProvider from "../contexts/LocationContext";
-import SelectLocation from "./location/SelectLocation";
+// import Providers from "./providers/providers";
+// import LocationContextProvider from "../contexts/LocationContext";
+// import SelectLocation from "./location/SelectLocation";
 
 const Home = () => {
     const history = useHistory();
 
     // Themes
-    const { isLightTheme, theme } = useContext(ThemeContext);
-    const syntax = isLightTheme ? theme.light.syntax : theme.dark.syntax;
+    // const { isLightTheme, theme } = useContext(ThemeContext);
+    // const syntax = isLightTheme ? theme.light.syntax : theme.dark.syntax;
 
     return (
         <>

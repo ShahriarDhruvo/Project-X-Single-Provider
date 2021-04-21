@@ -4,12 +4,11 @@ const Orders = require("../../server/models/Orders");
 const orders = Orders(sequelize, Sequelize);
 const Order_Details = require("../../server/models/Order_details");
 const orderDetails = Order_Details(sequelize, Sequelize);
-var moment = require('moment-timezone');
+var moment = require("moment-timezone");
 const CustomerAddress = require("../../server/models/Customer_Address");
 const customeraddress = CustomerAddress(sequelize, Sequelize);
 const Customer = require("../../server/models/Customer_Credential");
 const customer = Customer(sequelize, Sequelize);
-
 
 const Universal_Products = require("../models/Universal_Product_List");
 const universal_products = Universal_Products(sequelize, Sequelize);
@@ -94,10 +93,7 @@ exports.getCustomerOrderHistory = (req, res, nxt) => {
                 });
             } else {
                 result.forEach((element) => {
-                    var address =
-                        element.house_no +
-                        ", " +
-                        element.road_no;
+                    var address = element.house_no + ", " + element.road_no;
                     var productorder = {
                         order_id: element.order_id,
                         customer_phone: element.customer_phone,
@@ -137,8 +133,10 @@ exports.getConfirmedOrder = (req, res, nxt) => {
             let address =
                 element[0].house_no +
                 ", " +
-                element[0].road_no;
-           // var tym = moment(element[0].order_time).tz('Asia/Dhaka');
+                element[0].road_no +
+                (element[0].further_description &&
+                    ", " + element[0].further_description);
+            // var tym = moment(element[0].order_time).tz('Asia/Dhaka');
             let ord = {
                 total: element[0].payment,
                 time: element[0].order_time,
@@ -240,10 +238,7 @@ exports.getCustomerCancelledOrderHistory = (req, res, nxt) => {
                     if (element.employee_id === 0) {
                         reason = "Cancelled by Customer.";
                     } else reason = "Cancelled by Service Provider.";
-                    var address =
-                        element.house_no +
-                        ", " +
-                        element.road_no;
+                    var address = element.house_no + ", " + element.road_no;
                     //var tym = moment(element.order_time).tz('Asia/Dhaka');
                     var productorder = {
                         order_id: element.order_id,
@@ -299,10 +294,7 @@ exports.getCustomerActiveOrderHistory = (req, res, nxt) => {
                 });
             } else {
                 result.forEach((element) => {
-                    var address =
-                        element.house_no +
-                        ", " +
-                        element.road_no;
+                    var address = element.house_no + ", " + element.road_no;
                     //var tym = moment(element.order_time).tz('Asia/Dhaka');
                     var productorder = {
                         order_id: element.order_id,
