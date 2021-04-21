@@ -127,7 +127,7 @@ const RegistrationForm = (props) => {
                     </div>
 
                     {/* <div className={"form-group input-group rounded" + border}> */}
-                    <div className={"form-group input-group rounded"}>
+                    {/* <div className={"form-group input-group rounded"}>
                         <div className="input-group-prepend">
                             <span className="input-group-text">
                                 <FontAwesomeIcon icon={["fas", "building"]} />
@@ -141,7 +141,7 @@ const RegistrationForm = (props) => {
                             <option defaultValue="1">Customer</option>
                             <option value="2">Service Provider</option>
                         </select>
-                    </div>
+                    </div> */}
 
                     {isServiceProvider && (
                         <>
